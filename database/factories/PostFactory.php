@@ -24,7 +24,7 @@ class PostFactory extends Factory
             'slug' => $slug,
             'description' =>fake()->realTextBetween(200, 500),
             'image'=>fake()->imageUrl(640, 420),
-            'content'=>fake()->realTextBetween(160, 200),
+            'content'=>fake()->realTextBetween(500, 2000),
             'active'=>1,
             'category_id' => rand(1, 10)
         ];

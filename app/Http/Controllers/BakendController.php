@@ -7,6 +7,11 @@ use \App\Models\Post;
 
 class BakendController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function getAllPosts(){
         $articles = Post::all();
 
@@ -19,4 +24,5 @@ class BakendController extends Controller
 
         return view('backend.editArticle', ['article'=> $post]);
     }
+
 }

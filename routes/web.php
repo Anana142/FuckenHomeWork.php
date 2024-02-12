@@ -21,7 +21,11 @@ Route::get('/post/{id}', [FrontendController::class, 'getOnePost'] );
 
 Route::get('/category/{id}', [FrontendController::class, 'postsWithCategory']);
 
-Route::get('/admin', [BakendController::class, 'getAllPosts']);
-
 Route::get('/admin/edit/{id}', [BakendController::class, 'EditPosts']);
 
+
+Auth::routes();
+
+Route::get('/home', [BakendController::class, 'getAllPosts'])->name('home');
+
+//Route::get('/home', [App\Http\Controllers\BakendController::class, 'getAllPosts']);

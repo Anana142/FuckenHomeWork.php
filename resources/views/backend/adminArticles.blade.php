@@ -44,7 +44,7 @@
                              </div>
                          </div>
                     </td>
-                    <td> <a href="edit/{{ $article->id }}" class="btn btn-outline-primary"><i class="bi bi-hammer"></i></a> </td>
+                    <td> <a href="/admin/edit/{{ $article->id }}" class="btn btn-outline-primary"><i class="bi bi-hammer"></i></a> </td>
                 </tr>
             @endforeach
             </tbody>
