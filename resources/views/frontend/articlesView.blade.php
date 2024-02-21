@@ -34,7 +34,7 @@
 
         </article>
     @endforeach
-
+    {{$articles->links('vendor.pagination.bootstrap-5')}}
 @endsection
 
 

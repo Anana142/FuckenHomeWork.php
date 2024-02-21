@@ -172,7 +172,7 @@
                         <div class="sidebar-item tags">
                             <ul>
                                 @foreach($tags as $tag)
-                                    <li><a href="#">{{$tag->name}}</a></li>
+                                    <li><a href="/tag/{{$tag->name}}">{{$tag->name}}</a></li>
                                 @endforeach
                             </ul>
                         </div><!-- End sidebar tags-->

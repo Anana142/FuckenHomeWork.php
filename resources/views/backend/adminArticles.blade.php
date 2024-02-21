@@ -5,6 +5,9 @@
 
     <div>
         <h5 class="card-title" style="margin-left: 35px">Articles</h5>
+        <div style="Margin: 10px">
+            <a class="btn btn-primary" href="/admin/create/post" style="margin: 10px">Добавить</a>
+        </div>
         <table class="table" style="margin: 30px">
             <thead>
             <tr>
@@ -21,7 +24,7 @@
                     <th scope="row">{{ $article->id }}</th>
                     <td> {{$article->title}} </td>
                     <td> <img src="{{ $article->image }}" alt="" class="img-fluid"> </td>
-                    <td> <a type="button" href="delete/{{ $article->id }}"
+                    <td> <a type="button" href="/admin/post/{{ $article->id }}/delete"
                             class="btn btn-outline-danger"
                             data-bs-toggle="modal"
                             data-bs-target="#disablebackdrop-{{ $article->id }}"><i class="bi bi-trash"></i></a>
@@ -38,20 +41,19 @@
                                      </div>
                                      <div class="modal-footer">
                                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Нет</button>
-                                         <a type="button" href="delete/{{ $article->id }}" class="btn btn-primary">Удалить</a>
+                                         <a type="button" href="/admin/post/{{ $article->id }}/delete" class="btn btn-primary">Удалить</a>
                                      </div>
                                  </div>
                              </div>
                          </div>
                     </td>
-                    <td> <a href="/admin/edit/{{ $article->id }}" class="btn btn-outline-primary"><i class="bi bi-hammer"></i></a> </td>
+                    <td> <a href="/admin/post/{{ $article->id }}" class="btn btn-outline-primary"><i class="bi bi-hammer"></i></a> </td>
                 </tr>
             @endforeach
             </tbody>
         </table>
-    </div>
-    <div style="Margin: 10px">
-        <a class="btn btn-primary" href="add" style="margin: 10px">Добавить</a>
+
     </div>
 
+    {{$articles->links('vendor.pagination.bootstrap-5')}}
 @endsection

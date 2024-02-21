@@ -21,11 +21,17 @@ Route::get('/post/{id}', [FrontendController::class, 'getOnePost'] );
 
 Route::get('/category/{id}', [FrontendController::class, 'postsWithCategory']);
 
-Route::get('/admin/edit/{id}', [BakendController::class, 'EditPosts']);
 
+Route::get('/tag/{name}', [FrontendController::class, 'postsWithTag']);
 
 Auth::routes();
 
 Route::get('/home', [BakendController::class, 'getAllPosts'])->name('home');
 
-//Route::get('/home', [App\Http\Controllers\BakendController::class, 'getAllPosts']);
+Route::get('/admin/post/{post}', [BakendController::class, 'editPosts']);
+Route::post('/admin/post/{post:id}/update', [BakendController::class, 'updatePost'])->name('post.update');
+
+Route::get('/admin/create/post', [BakendController::class, 'createPost']);
+Route::post('/admin/save/post', [BakendController::class, 'savePost']);
+
+Route::get('/admin/post/{post:id}/delete', [BakendController::class, 'deletePost']);
