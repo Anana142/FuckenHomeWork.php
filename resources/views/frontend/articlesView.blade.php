@@ -22,16 +22,14 @@
                     <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="#">Many comments</a></li>
                 </ul>
             </div>
-
             <div class="entry-content">
                 <p>
                     {{ $article->description }}
                 </p>
                 <div class="read-more">
-                    <a href="post/{{ $article->id }}">Read More</a>
+                    <a href="/post/{{ $article->id }}">Read More</a>
                 </div>
             </div>
-
         </article>
     @endforeach
     {{$articles->links('vendor.pagination.bootstrap-5')}}

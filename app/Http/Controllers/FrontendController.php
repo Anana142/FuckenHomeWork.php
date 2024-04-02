@@ -20,21 +20,20 @@ class FrontendController extends Controller
         return view('frontend.articlesView', compact('articles', 'categories', 'last_posts', 'tags'));
     }
     public function getOnePost( $id){
-        $posts = Post::paginate(10);
-        $post = $posts->where('id', $id)->first();
+        $post = Post::where('id', $id)->first();
         PostShow::dispatch($post);
         $readingTime = $post->calculateReadingTime($post->content);
         $categories = \App\Models\Category::withCount('posts')->get();
         $last_posts = Post::latest()->limit(5)->get();
         $OldTags = Tag::withCount('posts')->get();
         $tags = $OldTags->where('posts_count','>',0);
+        $postTags = $post->tags();
 
-        return view('frontend.oneArticleView', ['article'=> $post, 'categories' => $categories, 'readingTime'=>$readingTime, 'last_posts'=>$last_posts, 'tags'=>$tags]);
+        return view('frontend.oneArticleView', ['article'=> $post, 'categories' => $categories, 'readingTime'=>$readingTime, 'last_posts'=>$last_posts, 'tags'=>$tags, 'postTags'=>$postTags]);
     }
 
     public function postsWithCategory($id){
-        $posts = Post::paginate(10);
-        $posts = $posts->where('category_id', $id)->all();
+        $posts = Post::where('category_id', $id)->paginate(10);
         $categories = \App\Models\Category::withCount('posts')->get();
         $last_posts = Post::latest()->limit(5)->get();
         $OldTags = Tag::withCount('posts')->get();
@@ -48,8 +47,7 @@ class FrontendController extends Controller
         $last_posts = Post::latest()->limit(5)->get();
         $OldTags = Tag::withCount('posts')->get();
         $tags = $OldTags->where('posts_count','>',0);
-
-        $posts = Post::paginate(10);
+        $posts = $tag->posts()->paginate(10);
 
 
         return view('frontend.articlesView', ['articles'=>$posts, 'categories' => $categories, 'last_posts'=>$last_posts, 'tags'=>$tags]);

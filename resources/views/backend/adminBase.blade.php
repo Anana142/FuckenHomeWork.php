@@ -52,11 +52,10 @@
      include summernote css/js
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
     -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
-</head>
 
+    <link href="{{ asset('assetsAdmin/vendor/summernote/summernote-lite.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('assetsAdmin/vendor/select2/select2.min.css')}}" rel="stylesheet" />
+</head>
 <body>
 
 <!-- ======= Header ======= -->
@@ -292,11 +291,24 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
         <li class="nav-item">
-            <a class="nav-link " href="#">
+            <a class="nav-link " href="/home">
                 <i class="bi bi-grid"></i>
                 <span>Главная</span>
             </a>
         </li><!-- End Dashboard Nav -->
+        <li class="nav-item">
+            <a class="nav-link " href="/listCategory">
+                <i class="bi bi-grid"></i>
+                <span>Категории</span>
+            </a>
+        </li><!-- End Category Page Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link " href="/listTags">
+                <i class="bi bi-grid"></i>
+                <span>Тэги</span>
+            </a>
+        </li><!-- End Tags Page Nav -->
 
         <li class="nav-item">
             <form method="post" action="{{ route('logout') }}">
@@ -307,7 +319,6 @@
                 </button>
             </form>
         </li><!-- End Login Page Nav -->
-
     </ul>
 
 </aside><!-- End Sidebar-->
@@ -364,7 +375,10 @@
 <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
 
-
+<!-- JS Files -->
+<script src="{{asset('assetsAdmin/vendor/jquery/jquery-3.4.1.slim.min.js.js')}}" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="{{ asset('assetsAdmin/vendor/summernote/summernote-lite.min.js.js')}}"></script>
+<script src="{{ asset('assetsAdmin/vendor/select2/select2.min.js.js')}}"></script>
 <!-- Vendor JS Files -->
 <script src="{{ asset('assetsAdmin/vendor/apexcharts/apexcharts.min.js') }}"></script>
 <script src="{{ asset('assetsAdmin/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
@@ -383,7 +397,7 @@
 
 <!-- SummerNote -->
 <!--<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>-->
-
+@yield('script')
 </body>
 
 </html>

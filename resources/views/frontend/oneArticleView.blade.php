@@ -37,9 +37,9 @@
 
         <i class="bi bi-tags"></i>
         <ul class="tags">
-            <li><a href="#">Creative</a></li>
-            <li><a href="#">Tips</a></li>
-            <li><a href="#">Marketing</a></li>
+            @foreach($article->tags as $postTag)
+                <li><a href="#">{{$postTag->name}}</a></li>
+            @endforeach
         </ul>
     </div>
 
