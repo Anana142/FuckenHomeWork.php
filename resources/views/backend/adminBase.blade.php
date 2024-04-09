@@ -28,7 +28,7 @@
     <link href="{{ asset('assetsAdmin/vendor/quill/quill.bubble.css') }}" rel="stylesheet">
     <link href="{{ asset('assetsAdmin/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
     <link href="{{ asset('assetsAdmin/vendor/simple-datatables/style.css') }}" rel="stylesheet">
-
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
     <!-- IziToast -->
     <link rel="stylesheet" href="{{ asset('assetsAdmin/vendor/izitoast/css/iziToast.min.css') }}">
 
@@ -293,7 +293,7 @@
         <li class="nav-item">
             <a class="nav-link " href="/home">
                 <i class="bi bi-grid"></i>
-                <span>Главная</span>
+                <span>Посты</span>
             </a>
         </li><!-- End Dashboard Nav -->
         <li class="nav-item">
@@ -397,6 +397,9 @@
 
 <!-- SummerNote -->
 <!--<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>-->
+
+
+
 @yield('script')
 </body>
 

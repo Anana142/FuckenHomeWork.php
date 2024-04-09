@@ -30,11 +30,11 @@ class BakendController extends Controller
         $post->title = $request->title;
         $post->content = $request->content;
         $post->category_id = $request->selectCategory;
+        $post->image = $request->image;
         $post->save();
 
-        $post->tags()->detach($post->tags());
         if($request->has('tags'))
-            $post->tags()->attach($request->tags);
+            $post->tags()->sync($request->tags);
 
 
 
@@ -54,7 +54,7 @@ class BakendController extends Controller
         $post->slug = Str::slug($request->title, '_');
         $post->description = "";
         $post->content = $request->content;
-        $post->image = "";
+        $post->image = $request->image;
         $post->active = 0;
         $post->category_id = $request->selectCategory;
         $post->save();
