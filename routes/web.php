@@ -20,44 +20,45 @@ use \App\Http\Controllers\TagController;
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();
 });
-
 Route::get('/', [FrontendController::class, 'getAllPosts']);
-
 Route::get('/post/{id}', [FrontendController::class, 'getOnePost'] );
-
 Route::get('/category/{id}', [FrontendController::class, 'postsWithCategory']);
-
-
 Route::get('/tag/{name}', [FrontendController::class, 'postsWithTag']);
 
 Auth::routes();
 
 Route::get('/home', [BakendController::class, 'getAllPosts'])->name('home');
 
+Route::middleware('auth')->prefix('/admin')->group(function(){
 //Категории
-Route::get('/listCategory', [CategoryController::class, 'getAllCategories'])->name('listCategory');
-Route::get('/admin/category/{category:id}/delete', [CategoryController::class, 'deleteCategory']);
-Route::get('/admin/category/{category:id}', [CategoryController::class, 'editCategory']);
-Route::post('/admin/category/{category:id}/update', [CategoryController::class, 'updateCategory'])->name('category.update');
-Route::get('/admin/create/category', [CategoryController::class, 'createCategory']);
-Route::post('/admin/save/category', [CategoryController::class, 'saveCategory']);
+    Route::prefix('/category')->group(function(){
+        Route::get('/', [CategoryController::class, 'getAllCategories'])->name('listCategory');
+        Route::get('/delete/{category:id}', [CategoryController::class, 'deleteCategory']);
+        Route::get( '/edit/{category:id}', [CategoryController::class, 'editCategory']);
+        Route::post('/update/{category:id}', [CategoryController::class, 'updateCategory'])->name('category.update');
+        Route::get('/create', [CategoryController::class, 'createCategory']);
+        Route::post('/save', [CategoryController::class, 'saveCategory']);
+    });
 //Конец категорий
 
 //Тэги
-Route::get('/listTags', [TagController::class, 'getAllTags'])->name('listTags');
-Route::get('/admin/create/tag', [TagController::class, 'createTag']);
-Route::post('/admin/save/tag', [TagController::class, 'saveTag']);
-Route::post('/admin/tag/{tag:id}/update', [TagController::class, 'updateTag'])->name('tag.update');
-Route::get('/admin/tag/{tag:id}', [TagController::class, 'editTag']);
-Route::get('/admin/tag/{tag:id}/delete', [TagController::class, 'deleteTag']);
+    Route::prefix('/tag')->group(function(){
+        Route::get('/', [TagController::class, 'getAllTags'])->name('listTags');
+        Route::get('/create', [TagController::class, 'createTag']);
+        Route::post('/save', [TagController::class, 'saveTag']);
+        Route::post('/update/{tag:id}', [TagController::class, 'updateTag'])->name('tag.update');
+        Route::get('/edit/{tag:id}', [TagController::class, 'editTag']);
+        Route::get('/delete/{tag:id}', [TagController::class, 'deleteTag']);
+    });
 //конец тэгов
+    Route::prefix('/post')->group(function() {
+        Route::get('/edit/{post}', [BakendController::class, 'editPosts']);
+        Route::post('/update/{post:id}', [BakendController::class, 'updatePost'])->name('post.update');
+        Route::get('/create', [BakendController::class, 'createPost']);
+        Route::post('/save', [BakendController::class, 'savePost']);
+        Route::get('/delete/{post:id}', [BakendController::class, 'deletePost']);
+    });
+});
 
-Route::get('/admin/post/{post}', [BakendController::class, 'editPosts']);
 
-Route::post('/admin/post/{post:id}/update', [BakendController::class, 'updatePost'])->name('post.update');
 
-Route::get('/admin/create/post', [BakendController::class, 'createPost']);
-
-Route::post('/admin/save/post', [BakendController::class, 'savePost']);
-
-Route::get('/admin/post/{post:id}/delete', [BakendController::class, 'deletePost']);

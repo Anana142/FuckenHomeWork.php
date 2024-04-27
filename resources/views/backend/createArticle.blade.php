@@ -3,7 +3,7 @@
 
 
 @section('content')
-<form style="margin: 30px" method="post" action="/admin/save/post" >
+<form style="margin: 30px" method="post" action="/admin/post/save" >
 <input type="hidden" name="id" value="{{ $post->id }}" style="visibility: collapse"/>
 <h3 style="font-size: 24px; font-weight: bold" >Заголовок</h3>
     <input type="text" name="title" value="{{ $post->title }}">

@@ -297,14 +297,14 @@
             </a>
         </li><!-- End Dashboard Nav -->
         <li class="nav-item">
-            <a class="nav-link " href="/listCategory">
+            <a class="nav-link " href="/admin/category">
                 <i class="bi bi-grid"></i>
                 <span>Категории</span>
             </a>
         </li><!-- End Category Page Nav -->
 
         <li class="nav-item">
-            <a class="nav-link " href="/listTags">
+            <a class="nav-link " href="/admin/tag">
                 <i class="bi bi-grid"></i>
                 <span>Тэги</span>
             </a>

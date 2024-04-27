@@ -6,7 +6,7 @@
     <div>
         <h5 class="card-title" style="margin-left: 35px">Tags</h5>
         <div style="Margin: 10px">
-            <a class="btn btn-primary" href="/admin/create/tag" style="margin: 10px">Добавить</a>
+            <a class="btn btn-primary" href="/admin/tag/create" style="margin: 10px">Добавить</a>
         </div>
         <table class="table" style="margin: 30px">
             <thead>
@@ -22,7 +22,7 @@
                 <tr>
                     <th scope="row">{{ $tag->id }}</th>
                     <td> {{$tag->name}} </td>
-                    <td> <a type="button" href="/admin/tag/{{ $tag->id }}/delete"
+                    <td> <a type="button" href="/admin/tag/delete/{{ $tag->id }}"
                             class="btn btn-outline-danger"
                             data-bs-toggle="modal"
                             data-bs-target="#disablebackdrop-{{ $tag->id }}"><i class="bi bi-trash"></i></a>
@@ -39,13 +39,13 @@
                                      </div>
                                      <div class="modal-footer">
                                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Нет</button>
-                                         <a type="button" href="/admin/tag/{{ $tag->id }}/delete" class="btn btn-primary">Удалить</a>
+                                         <a type="button" href="/admin/tag/delete/{{ $tag->id }}" class="btn btn-primary">Удалить</a>
                                      </div>
                                  </div>
                              </div>
                          </div>
                     </td>
-                    <td> <a href="/admin/tag/{{ $tag->id }}" class="btn btn-outline-primary"><i class="bi bi-hammer"></i></a> </td>
+                    <td> <a href="/admin/tag/edit/{{ $tag->id }}" class="btn btn-outline-primary"><i class="bi bi-hammer"></i></a> </td>
                 </tr>
             @endforeach
             </tbody>
